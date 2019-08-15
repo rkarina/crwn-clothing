@@ -3678,6 +3678,7 @@ find-up@^2.0.0, find-up@^2.1.0:
 firebase@^6.3.5:
   version "6.3.5"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-6.3.5.tgz#ba7a47f5300e89cdfaaa6af8af298fe4053c6c2f"
+  integrity sha512-6tDNro9jO/NM2ofWc/2dZf0L7dcNOl6dhImn3jDZAGFTLmT4dxBm+FcWOzQCoM1+GZxpYZGURGAvwCMAgBvtTQ==
   dependencies:
     "@firebase/app" "0.4.14"
     "@firebase/app-types" "0.4.3"
