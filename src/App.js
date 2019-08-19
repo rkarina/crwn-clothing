@@ -1,11 +1,11 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Pages
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component'; 
 
 // Components
 import Header from './components/header/header.component';
@@ -14,7 +14,6 @@ import Header from './components/header/header.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
 
-
 import './App.css';
 
 class App extends React.Component {
@@ -22,7 +21,8 @@ class App extends React.Component {
     super();
 
     this.state = {
-      currentUser: null
+      currentUser: null,
+      hidden: false
     }
   }
 
@@ -60,18 +60,16 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/shop' component={ShopPage} />
-          <Route exact path='/signin'
-            render={() => this.props.currentUser
-              ? (<Redirect to='/' />)
-              : (<SignInAndSignUpPage />)} />
+          <Route exact path='/signin' component={SignInAndSignUp} />
         </Switch>
       </div>
     );
   }
 };
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+const mapStateToProps = ({ user, hidden }) => ({
+  currentUser: user.currentUser,
+  hideCartDropdown: hidden
 })
 
 const mapDispatchToProps = dispatch => ({
