@@ -12,7 +12,7 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, cartItems }) => (
     <div className='header'>
         <Link className='logo-container' to="/" >
             <Logo className='logo' />
@@ -36,15 +36,16 @@ const Header = ({ currentUser, hidden }) => (
         </div>
         {
             hidden ? null :
-                <CartDropdown />
+                <CartDropdown cartItems={cartItems} />
         }
     </div>
 );
 
 // state - ROOT REDUCER
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden, cartItems } }) => ({
     currentUser,
-    hidden
+    hidden, 
+    cartItems
 });
 
 export default connect(mapStateToProps)(Header); 
