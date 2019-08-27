@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'; // HIGHER ORDER COMPONENT
+import { createStructuredSelector } from 'reselect';
 
 import './header.styles.scss';
 
@@ -11,6 +12,9 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import { selectCurrentUser, selectCartHidden } from '../../redux/user/user.selectors';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
+
 
 const Header = ({ currentUser, hidden, cartItems }) => (
     <div className='header'>
@@ -42,10 +46,10 @@ const Header = ({ currentUser, hidden, cartItems }) => (
 );
 
 // state - ROOT REDUCER
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden, cartItems } }) => ({
-    currentUser,
-    hidden, 
-    cartItems
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
+    hidden: selectCartHidden,
+    cartItems: selectCartItems
 });
 
 export default connect(mapStateToProps)(Header); 

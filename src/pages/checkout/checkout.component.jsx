@@ -1,12 +1,13 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
+
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors';
 
 import './checkout.styles.scss';
 
-const CheckoutPage = ({cartTotal}) => (
+const CheckoutPage = ({ cartItems, cartTotal }) => (
     <div className='checkout-page'>
         <div className='checkout-header'>
             <div className='header-block'>
@@ -21,13 +22,16 @@ const CheckoutPage = ({cartTotal}) => (
             <div className='header-block'>
                 Price
             </div>
+            <div className='header-block'>
+                Remove
+            </div>
         </div>
         {
-
+            cartItems.map(item => (
+                <CheckoutItem key={item.id} cartItem={item} />
+            ))
         }
-        <div className='total'>
-            <span>Total: </span><span>${cartTotal}</span>
-        </div>
+        <div className='total'>TOTAL: ${cartTotal}</div>
     </div>
 );
 

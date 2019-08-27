@@ -23,6 +23,31 @@
     }
   }
 
+  .item-row {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid darkgrey;
+
+    .header-block {
+      text-transform: capitalize;
+      width: 23%;
+
+      &:last-child {
+        width: 8%;
+      }
+
+      .remove-icon {
+        font-weight: bold;
+      }
+    }
+
+    .image {
+      height: 220px;
+    }
+  }
+
   .total {
     margin-top: 30px;
     margin-left: auto;
